@@ -32,9 +32,11 @@ To use this script, you need to have the following:
 
 5. The script will display the available voices. Enter the number corresponding to the desired voice and press Enter.
 
-6. The script will send a request to the API and generate the speech. If the request is successful, the audio file will be saved as `output.mp3` in the same directory.
+6. Enter the desired name for the output file
 
-7. Once the speech generation is complete, the script will display a success message or an error message if there was a problem with the request.
+7. The script will send a request to the API and generate the speech. If the request is successful, the audio file will be saved as your desired file name in the same directory.
+
+8. Once the speech generation is complete, the script will display a success message or an error message if there was a problem with the request.
 
 ## Customization
 
