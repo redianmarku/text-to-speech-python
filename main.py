@@ -20,6 +20,11 @@ def load_api_key():
 def get_text():
     return input("Enter the text you want to convert to speech: ")
 
+# Function to prompt user for output file name
+def get_output_filename():
+    return input("Enter the desired output file name (without extension): ")
+
+
 # Function to prompt user to select a voice
 def select_voice(voices):
     print("Available voices:")
@@ -29,7 +34,7 @@ def select_voice(voices):
     return voices[voice_index]['voice_id']
 
 # Function to send a request to the API and save the speech
-def generate_speech(api_key, text, voice_id):
+def generate_speech(api_key, text, voice_id, output_filename):
     # API endpoint
     conn = http.client.HTTPSConnection("api.elevenlabs.io")
 
@@ -59,7 +64,7 @@ def generate_speech(api_key, text, voice_id):
     # Check if the request was successful
     if response.status == 200:
         # Save the audio file
-        with open("output.mp3", "wb") as file:
+        with open(f"{output_filename}.mp3", "wb") as file:
             file.write(response.read())
         print("Speech generated successfully!")
     else:
@@ -99,5 +104,8 @@ voices = [
 # Prompt user to select a voice
 voice_id = select_voice(voices)
 
+# Prompt user for output file name
+output_filename = get_output_filename()
+
 # Generate the speech using the API key, text, and voice ID
-generate_speech(api_key, text, voice_id)
+generate_speech(api_key, text, voice_id, output_filename)
